@@ -18,7 +18,6 @@ https://nanonets.com/blog/ocr-with-tesseract/#:~:text=Tesseract%20is%20an%20open
 Agglomerative-clustering<br>
 https://towardsdatascience.com/machine-learning-algorithms-part-12-hierarchical-agglomerative-clustering-example-in-python-1e18e0075019
 
-<br>
-Literature Survey
+Literature Survey<br>
 1)EAST : 
 https://arxiv.org/pdf/1704.03155v2.pdf
