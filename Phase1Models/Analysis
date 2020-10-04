@@ -1,0 +1,7 @@
+Decision Tree Model:
+  With Placement Information
+  Model trained based on Branch and CGPA with TierLevel as Target
+  Sample size=515
+  Results
+    using Entropy: 0.77 accuracy
+    using gini index: 0.72 accuracy
