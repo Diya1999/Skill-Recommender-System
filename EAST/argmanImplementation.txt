@@ -1,0 +1,81 @@
+Implementing https://github.com/argman/EAST on windows 10 system using Anaconda and jupyter notebook
+
+Install VS code 2017 or later versions.
+clone repo
+download the model from google drive link provided in readme
+
+create a tmp/ folder and tmp/images/ to save the pdf converted jpg/png images 
+move pretrained model to tmp/
+
+CHANGES TO BE MADE
+
+### to resolve shapely errors###
+download Shapely-1.7.1-cp37-cp37m-win_amd64.whl and add to EAST cloned repo(main directory)
+
+reference:
+https://towardsdatascience.com/install-shapely-on-windows-72b6581bb46c
+
+On jupyterTerminal
+cd to cloned repo
+pip install Shapely-1.7.1-cp37-cp37m-win_amd64.whl
+
+### to resolve subprocess not found errors###
+Edit lanms/__init__.py 
+comments drop two lines
+#if subprocess.call(['make','-C', BASE_DIR]) != 0: # return value
+# raise RuntimeError('Cannot compile lanms: {}'.format(BASE_DIR))
+
+if required in lanms/MAKEFILE: change python3 to python ( based on your system requirements)
+
+### resolving adaptor.cpp compilation errors##
+
+ref: http://yingrenn.blogspot.com/2018/11/east-text-detector.html
+
+since it runs cpp files. you need VSStudio
+
+open Open
+VS2017 x64 Native Tools Command Prompt
+(if you cannot find in start menu. goto equivalent directory of C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Visual Studio 2017\Visual Studio Tools\VC
+Use only x64. x86 did not work
+
+on JupyterTerminal
+cd lanms
+cl adaptor.cpp .\include\clipper\clipper.cpp /I .\include /I "C:\Users\rames\Anaconda3\include" /LD /Fe:adaptor.pyd /link /LIBPATH:"C:\Users\rames\Anaconda3\libs"
+go to equivalent Anaconda3 folder
+
+
+-----------------------------------------------------    expected output ------------------------------------------------------------------------
+Microsoft (R) C/C++ Optimizing Compiler Version 19.16.27043 for x64
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+adaptor.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include\xlocale(319): warning C4530: C++ exception handler used, but unwind semantics are not enabled. Specify /EHsc
+clipper.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include\xlocale(319): warning C4530: C++ exception handler used, but unwind semantics are not enabled. Specify /EHsc
+Generating Code...
+Microsoft (R) Incremental Linker Version 14.16.27043.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/dll
+/implib:adaptor.lib
+/out:adaptor.pyd
+/LIBPATH:C:\Users\rames\Anaconda3\libs
+adaptor.obj
+clipper.obj
+   Creating library adaptor.lib and object adaptor.exp
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+in jupyterTerminal
+now cd back to make cloned repo
+
+python eval.py --test_data_path=C:/Users/rames/OneDrive/Des
+ktop/namma/FinalYear/EAST-master/tmp/images/ --gpu_list=0 --checkpoint_path=C:/Users/rames/OneDrive/Desktop/namma/FinalYear
+/EAST-master/tmp/east_icdar2015_resnet_v1_50_rbox/ --output_dir=C:/Users/rames/OneDrive/Desktop/namma/FinalYear/EAST-master
+/tmp/
+
+change directories accordingly
+This should generate .txt file for each image, with all 8 coordinates of each bounding box. Parse to proceed with clustering!
+
+
+Other references
+https://colab.research.google.com/github/tugstugi/dl-colab-notebooks/blob/master/notebooks/EAST.ipynb#scrollTo=I9LUFjL3LxOg
+https://github.com/argman/EAST/issues/120
