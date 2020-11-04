@@ -73,4 +73,9 @@ ktop/namma/FinalYear/EAST-master/tmp/images/ --gpu_list=0 --checkpoint_path=C:/U
 /tmp/
 
 change directories accordingly
-This shoul generate .txt file for each image, with all 8 coordinates of each bounding box. Parse to proceed with clustering!
+This should generate .txt file for each image, with all 8 coordinates of each bounding box. Parse to proceed with clustering!
+
+
+Other references
+https://colab.research.google.com/github/tugstugi/dl-colab-notebooks/blob/master/notebooks/EAST.ipynb#scrollTo=I9LUFjL3LxOg
+https://github.com/argman/EAST/issues/120
