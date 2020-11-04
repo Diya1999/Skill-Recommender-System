@@ -19,7 +19,7 @@ On jupyterTerminal
 cd to cloned repo
 pip install Shapely-1.7.1-cp37-cp37m-win_amd64.whl
 
-### to resolve subpress not found errors###
+### to resolve subprocess not found errors###
 Edit lanms/__init__.py 
 comments drop two lines
 #if subprocess.call(['make','-C', BASE_DIR]) != 0: # return value
@@ -28,6 +28,9 @@ comments drop two lines
 if required in lanms/MAKEFILE: change python3 to python ( based on your system requirements)
 
 ### resolving adaptor.cpp compilation errors##
+
+ref: http://yingrenn.blogspot.com/2018/11/east-text-detector.html
+
 since it runs cpp files. you need VSStudio
 
 open Open
