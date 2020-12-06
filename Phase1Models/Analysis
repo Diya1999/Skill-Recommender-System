@@ -1,7 +1,85 @@
-Decision Tree Model:
-  With Placement Information
-  Model trained based on Branch and CGPA with TierLevel as Target
+Models tested:
+
+Decision Tree Model 1:only Placement Information
+  Model trained based on Branch, CGPA with TierLevel as Target
   Sample size=515
   Results
     using Entropy: 0.77 accuracy
     using gini index: 0.72 accuracy
+
+DECISION TREE VARIATIONS:
+MASTER DATASET 2017 2016:
+samples: 193
+ 
+ Model 1:(only numerical)
+     features: 10th, 12th, CGPA, NumberofProjects, Number of internships
+     Target: tier level
+     Accuracy: 80%
+     split: 10-90
+     
+Model 2:(numerical+Branch)
+     features: 10th, 12th, CGPA, NumberofProjects, Number of internships, Branch
+     Target: tier level
+     Accuracy: 10% split: 20/80
+     Otherwise accuracy falls < 10%
+     
+Model 3:(numerical)
+     features: 10th, 12th, CGPA, NumberofProjects, Number of internships, Branch
+     Target: Company name 
+     Accuracy: 83% split: 6/94
+     Otherwise accuracy falls to 70%
+     
+Model 4: (numerical values+branch+programming lang)
+     features: 10th, 12th, CGPA, NumberofProjects, Number of internships, Branch, Prog lang
+     Target: Tier level
+     Accuracy: 75% split: 10/90
+     Otherwise accuracy falls to 70%
+     
+Model 5: (numerical values+branch+project domain)
+     features: 10th, 12th, CGPA, NumberofProjects, Number of internships, Branch, project domain
+     Target: Tier level
+     Accuracy: 82% split: 20/80
+
+Model 6: (numerical values+branch+project domain+prog lang)
+     features: 10th, 12th, CGPA, NumberofProjects, Number of internships, Branch, project domain, prog lang
+     Target: Tier level
+     Accuracy: 85% split: 20/80 
+     65 columns
+     
+Model 7: (numerical values+branch+project domain+prog lang+software tool)
+     features: 10th, 12th, CGPA, NumberofProjects, Number of internships, Branch, project domain, prog lang, software tool
+     Target: Tier level
+     Accuracy: 85% split: 20/80 
+     134 columns
+     
+Model 8:
+    features:
+            '10thMarks', '12thPercentage', 'Branch', 'CGPA', 
+             , 'NoofInternships',
+            'InternshipCompany', 'NoofProjects',
+           'ProjectDetailDomain', 'ProgLanguages', 'Publication', 
+           'ScholarshipsKey', 'SoftwareTools', 
+     Target:Tier
+     Accuracy: 85% with 20/80 split
+     176 columns
+
+Model 9:
+    features:
+            '10thMarks', '12thPercentage', 'Branch', 'CGPA', 'CourseName',
+           'CourseGrade', 'NoofInternships',
+            'InternshipCompany', 'NoofProjects',
+           'ProjectDetailDomain', 'ProgLanguages', 'Publication', 
+           'ScholarshipsKey', 'SoftwareTools', 
+     Target:Company Name
+     Accuracy: 20%
+     
+Model 10: added courses
+    features:
+            '10thMarks', '12thPercentage', 'Branch', 'CGPA', 'CourseName',
+           'CourseGrade', 'NoofInternships',
+            'InternshipCompany', 'NoofProjects',
+           'ProjectDetailDomain', 'ProgLanguages', 'Publication', 
+           'ScholarshipsKey', 'SoftwareTools', 
+     Target:Tier 
+     Accuracy: 79%
+     
